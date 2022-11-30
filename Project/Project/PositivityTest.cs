@@ -70,8 +70,8 @@ namespace Project
         }
         public void Question()
         {
-            label1.Text = Read.ReadLine();
-            label2.Text = String.Format("Номер вопроса: {0}/48", question_count);
+            label2.Text = Read.ReadLine();
+            label1.Text = String.Format("Номер вопроса: {0}/48", question_count);
             radioButton1.Text = Read.ReadLine();
             radioButton2.Text = Read.ReadLine();
 
@@ -83,26 +83,26 @@ namespace Project
             if (Read.EndOfStream == true) button2.Text = "Завершить";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
-            if(button2.Text == "Следующий вопрос")
+            if (button2.Text == "Следующий вопрос")
             {
                 Count();
                 Question();
             }
 
-            if(button2.Text == "Завершить")
+            if (button2.Text == "Завершить")
             {
                 radioButton1.Visible = false;
                 radioButton2.Visible = false;
                 button2.Visible = false;
-                label2.Visible = false;
-                label1.Text = String.Format("Результат: {0} {1} {2} {3}", HoB, B, G, result);
+                label1.Visible = false;
+                label2.Text = String.Format("Результат: {0} {1} {2} {3}", HoB, B, G, result);
             }
         }
         public void Count()
@@ -177,6 +177,11 @@ namespace Project
             B = PmB + PvB + PsB; // 24
             G = PmG + PvG + PsG; // 23
             result = G - B; // -1
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
