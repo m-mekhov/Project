@@ -70,9 +70,8 @@ namespace Project
 
             if (button2.Text == "Следующий вопрос")
             {
-                Question();
                 Count();
-
+                Question();
             }
 
         }
@@ -84,7 +83,7 @@ namespace Project
             radioButton2.CheckedChanged += new EventHandler(Switching_status);
             radioButton3.CheckedChanged += new EventHandler(Switching_status);
             radioButton4.CheckedChanged += new EventHandler(Switching_status);
-
+            
             Start();
         }
         void Start()
@@ -98,7 +97,6 @@ namespace Project
                 this.Text = "Психологический тест";
 
                 question_count = 1;
-                balls = 0;
                 
             }
             catch (Exception)
@@ -110,13 +108,13 @@ namespace Project
         public void Question()
         {
             label1.Text = "Как вы чувствовали себя на этой неделе?";
-            label2.Text = String.Format("Номер вопроса: {0}/21", question_count);
+            label2.Text = String.Format("Номер вопроса: {0}/21 {1}", question_count, balls);
             radioButton1.Text = Read.ReadLine();
             radioButton2.Text = Read.ReadLine();
             radioButton3.Text = Read.ReadLine();
             radioButton4.Text = Read.ReadLine();
 
-            radioButton1.Checked = true;
+            radioButton1.Checked = false;
             radioButton2.Checked = false;
             radioButton3.Checked = false;
             radioButton4.Checked = false;
@@ -135,22 +133,22 @@ namespace Project
         }
         public void Count()
         {
-            if (radioButton1.Checked == true)
-            {
-                balls = balls + 0;
-            }
-            else if (radioButton2.Checked == true)
-            {
-                balls = balls + 1;
-            }
-            else if (radioButton3.Checked == true)
-            {
-                balls = balls + 2;
-            }
-            else if (radioButton4.Checked == true)
-            {
-                balls = balls + 3;
-            }
+                if (radioButton1.Checked == true)
+                {
+                    balls = balls + 0;
+                }
+                else if (radioButton2.Checked == true)
+                {
+                    balls = balls + 1;
+                }
+                else if (radioButton3.Checked == true)
+                {
+                    balls = balls + 2;
+                }
+                else if (radioButton4.Checked == true)
+                {
+                    balls = balls + 3;
+                }
         }
         public void Conclusion()
         {
