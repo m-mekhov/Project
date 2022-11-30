@@ -19,7 +19,24 @@ namespace Project
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
+        }
+
+        private void choiceButton_Click(object sender, EventArgs e)
+        {
+            
+            Form1 f = new Form1();
+            f.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PositivityTest pt = new PositivityTest();
+            pt.Show();
         }
     }
 }

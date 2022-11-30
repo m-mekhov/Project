@@ -15,7 +15,7 @@ namespace Project
 {
     public partial class Form1 : Form
     {
-        int question_count; // Кол-во вопросов
+        int question_count;
         int balls;
         string result;
 
@@ -49,7 +49,7 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -62,19 +62,17 @@ namespace Project
                 radioButton4.Visible = false;
                 button2.Visible = false;
                 label2.Visible = false;
-
-                if(balls >= 0 && balls <=9)
-                {
-                    result = "У вас отсутсвие депрессивных симптомов";
-                }
-
-                label1.Text= String.Format("Тестирование завершено.\n" + "Количество набранных баллов: {0}.\n" + "Результат: {1}", balls, result);
+                Conclusion();
+                label1.Text= String.Format("Тестирование завершено.\n" + "Количество набранных баллов: {0}.\n" + "Вывод: {1}", balls, result);
 
             }
+
+
             if (button2.Text == "Следующий вопрос")
             {
-                count();
-                question();
+                Question();
+                Count();
+
             }
 
         }
@@ -82,21 +80,20 @@ namespace Project
         {
             button1.Text = "Выйти";
             button2.Text = "Следующий вопрос";
-            radioButton1.CheckedChanged += new EventHandler(switching_status);
-            radioButton2.CheckedChanged += new EventHandler(switching_status);
-            radioButton3.CheckedChanged += new EventHandler(switching_status);
-            radioButton4.CheckedChanged += new EventHandler(switching_status);
+            radioButton1.CheckedChanged += new EventHandler(Switching_status);
+            radioButton2.CheckedChanged += new EventHandler(Switching_status);
+            radioButton3.CheckedChanged += new EventHandler(Switching_status);
+            radioButton4.CheckedChanged += new EventHandler(Switching_status);
 
-
-            start();
+            Start();
         }
-        void start()
+        void Start()
         {
             var encoding = System.Text.Encoding.GetEncoding(65001);
 
             try
             {
-                Read = new StreamReader(Directory.GetCurrentDirectory() + @"\Question.txt", encoding);
+                Read = new StreamReader(Directory.GetCurrentDirectory() + @"\Depression test.txt", encoding);
 
                 this.Text = "Психологический тест";
 
@@ -106,11 +103,11 @@ namespace Project
             }
             catch (Exception)
             {
-                MessageBox.Show("Error 1");
+                MessageBox.Show("Ошибка загрузки файла с вопросами");
             }
-            question();
+            Question();
         }        
-        public void question()
+        public void Question()
         {
             label1.Text = "Как вы чувствовали себя на этой неделе?";
             label2.Text = String.Format("Номер вопроса: {0}/21", question_count);
@@ -129,14 +126,14 @@ namespace Project
 
             if (Read.EndOfStream == true) button2.Text = "Завершить";
         }
-        public void switching_status(object sender, EventArgs e)
+        public void Switching_status(object sender, EventArgs e)
         {
             button1.Enabled = true;
             button2.Focus();
             RadioButton p = (RadioButton)sender;
             var t = p.Name;
         }
-        public void count()
+        public void Count()
         {
             if (radioButton1.Checked == true)
             {
@@ -155,5 +152,29 @@ namespace Project
                 balls = balls + 3;
             }
         }
+        public void Conclusion()
+        {
+            if (balls >= 0 && balls <= 9)
+            {
+                result = "У Вас отсутсвие депрессивных симптомов.";
+            }
+            else if (balls >= 10 && balls <= 15)
+            {
+                result = "У Вас легкая депрессия.";
+            }
+            else if (balls >= 16 && balls <= 19)
+            {
+                result = "У Вас умеренная депрессия.";
+            }
+            else if (balls >= 20 && balls <= 29)
+            {
+                result = "У Вас выраженная депрессия.";
+            }
+            else if (balls >= 30 && balls <= 63)
+            {
+                result = "У Вас тяжёлая депрессия.";
+            }
+        }
+
     } 
 }
