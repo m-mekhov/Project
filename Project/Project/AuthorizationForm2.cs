@@ -24,7 +24,7 @@ namespace Project
 
         private void choiceButton_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
             Form1 f = new Form1();
             f.Show();
         }
@@ -35,6 +35,7 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
             PositivityTest pt = new PositivityTest();
             pt.Show();
         }

@@ -61,11 +61,13 @@ namespace Project
                 radioButton3.Visible = false;
                 radioButton4.Visible = false;
                 button2.Visible = false;
+                button3.Visible = true;
                 label2.Visible = false;
                 label3.Visible = true;
-                Conclusion();
+                Conclusion();   
                 label1.Text = String.Format("Тестирование завершено.");
                 label3.Text = String.Format("Количество баллов: {0}\n" + "Результат тестирования: {1}", balls, result);
+                button3.Text = "Выбрать тест";
             }
 
 
@@ -73,8 +75,6 @@ namespace Project
             {
                 Count();
                 Question();
-                
-
             }
 
         }
@@ -87,6 +87,7 @@ namespace Project
             radioButton3.CheckedChanged += new EventHandler(Switching_status);
             radioButton4.CheckedChanged += new EventHandler(Switching_status);
             label3.Visible = false;
+            button3.Visible= false;
             Start();
         }
         void Start()
@@ -100,7 +101,8 @@ namespace Project
                 this.Text = "Психологический тест";
 
                 question_count = 1;
-                
+                balls = 0;
+                result = "";
             }
             catch (Exception)
             {
@@ -111,16 +113,11 @@ namespace Project
         public void Question()
         {
             label1.Text = "Как вы чувствовали себя на этой неделе?";
-            label2.Text = String.Format("Номер вопроса: {0}/21 {1}", question_count, balls);
+            label2.Text = String.Format("Номер вопроса: {0}/21", question_count);
             radioButton1.Text = Read.ReadLine();
             radioButton2.Text = Read.ReadLine();
             radioButton3.Text = Read.ReadLine();
             radioButton4.Text = Read.ReadLine();
-
-            radioButton1.Checked = false;
-            radioButton2.Checked = false;
-            radioButton3.Checked = false;
-            radioButton4.Checked = false;
 
             question_count = question_count + 1;
 
@@ -180,6 +177,13 @@ namespace Project
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AuthorizationForm2 AF2 = new AuthorizationForm2();
+            AF2.Show();
         }
     } 
 }
