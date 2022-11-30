@@ -109,7 +109,7 @@ namespace Project
                 MessageBox.Show("Error 1");
             }
             question();
-        }
+        }        
         public void question()
         {
             label1.Text = "Как вы чувствовали себя на этой неделе?";
@@ -155,5 +155,5 @@ namespace Project
                 balls = balls + 3;
             }
         }
-    }
+    } 
 }
