@@ -62,16 +62,18 @@ namespace Project
                 radioButton4.Visible = false;
                 button2.Visible = false;
                 label2.Visible = false;
+                label3.Visible = true;
                 Conclusion();
-                label1.Text= String.Format("Тестирование завершено.\n" + "Количество набранных баллов: {0}.\n" + "Вывод: {1}", balls, result);
-
+                label1.Text = String.Format("Тестирование завершено.");
+                label3.Text = String.Format("Количество баллов: {0}\n" + "Результат тестирования: {1}", balls, result);
             }
 
 
             if (button2.Text == "Следующий вопрос")
             {
-                Question();
                 Count();
+                Question();
+                
 
             }
 
@@ -84,7 +86,7 @@ namespace Project
             radioButton2.CheckedChanged += new EventHandler(Switching_status);
             radioButton3.CheckedChanged += new EventHandler(Switching_status);
             radioButton4.CheckedChanged += new EventHandler(Switching_status);
-
+            label3.Visible = false;
             Start();
         }
         void Start()
@@ -156,7 +158,7 @@ namespace Project
         {
             if (balls >= 0 && balls <= 9)
             {
-                result = "У Вас отсутсвие депрессивных симптомов.";
+                result = "У Вас отсутствие депрессивных симптомов.";
             }
             else if (balls >= 10 && balls <= 15)
             {
@@ -176,5 +178,9 @@ namespace Project
             }
         }
 
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     } 
 }
