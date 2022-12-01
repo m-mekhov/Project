@@ -11,6 +11,7 @@ using System.IO;
 using System.Runtime.Remoting.Channels;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 
 namespace Project
@@ -18,7 +19,6 @@ namespace Project
     public partial class PositivityTest : Form
     {
         StreamReader Read;
-        int count;
         int question_count;
         int PmB; // постоянство плохих событий
         int PmG; // постоянство хороших событий
@@ -39,35 +39,59 @@ namespace Project
 
         private void PositivityTest_Load(object sender, EventArgs e)
         {
-            button3.Text = "Выбрать тест";
-            button2.Text = "Следующий вопрос";
-            button1.Text = "Выход";
             radioButton1.CheckedChanged += new EventHandler(Switching_status);
             radioButton2.CheckedChanged += new EventHandler(Switching_status);
-            button3.Visible = false;
-            label3.Visible = false;
+            
+            LoadVisible();
+            
             Start();
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+
+        }
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (button2.Text == "Завершить")
+            {
+                EndVisible();
+                
+                Conclusion();
+                
+                label3.Text = String.Format("Результат: \n PmB: {0}, {1} \n PmG: {2}, {3} \n PvB: {4}, {5} \n PvG: {6} {7} \n HoB: {8}, {9} \n PsB: {10}, {11} \n PsG {12}, {13} \n B: {14}, {15} \n G: {16}, {17} \n Разность G и B: {18}, {19} ", PmB, rez_PmB, PmG, rez_PmG, PvB, rez_PvB, PvG, rez_PvG, HoB, rez_HoB, PsB, rez_PsB, PsG, rez_PsG, B, rez_B, G, rez_G, result, rez_res);
+            }
+
+            if (button2.Text == "Следующий вопрос")
+            {
+                Question();
+                
+                Count();
+            }
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
             AuthorizationForm2 AF2 = new AuthorizationForm2();
             AF2.Show();
         }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(" PmB - постоянство плохих событий \n PmG - постоянство хороших событий \n PvB - пространственное распространение плохих событий \n PvG - пространственное распространение хороших событий \n HoB - коэффициент надежды \n PsB - персонализация плохого \n PsG - персонализация хорошего \n B - итог по неблагоприятным событиям \n G - итог по благоприятным событиям \n Разность G и B - окончательный итог");
+        }
         public void Switching_status(object sender, EventArgs e)
         {
             button1.Enabled = true;
             button2.Focus();
         }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
         public void Start()
         {
             var encoding = System.Text.Encoding.GetEncoding(65001);
@@ -97,37 +121,11 @@ namespace Project
 
             question_count = question_count + 1;
 
-            if (Read.EndOfStream == true) button2.Text = "Завершить";
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            if (button2.Text == "Завершить")
+            if (Read.EndOfStream == true)
             {
-                radioButton1.Visible = false;
-                radioButton2.Visible = false;
-                button2.Visible = false;
-                button3.Visible = true;
-                label1.Visible = false;
-                label2.Visible = false;
-                panel2.Visible = false;
-                label3.Visible = true;
-                Conclusion();
-                label3.Text = String.Format("Результат: \n PmB: {0}, {1} \n PmG: {2}, {3} \n PvB: {4}, {5} \n PvG: {6} {7} \n HoB: {8}, {9} \n PsB: {10}, {11} \n PsG {12}, {13} \n B: {14}, {15} \n G: {16}, {17} \n Разность G и B: {18}, {19} ", PmB, rez_PmB, PmG, rez_PmG, PvB, rez_PvB, PvG, rez_PvG, HoB, rez_HoB, PsB, rez_PsB, PsG, rez_PsG, B, rez_B, G, rez_G, result, rez_res);
+                button2.Text = "Завершить";
+
             }
-
-            if (button2.Text == "Следующий вопрос")
-            {
-                Question();
-                Count();
-            }
-
-
         }
         public void Count()
         {
@@ -201,6 +199,28 @@ namespace Project
             B = PmB + PvB + PsB; // 24
             G = PmG + PvG + PsG; // 23
             result = G - B; // -1
+        }
+        public void LoadVisible()
+        {
+            button3.Text = "Выбрать тест";
+            button2.Text = "Следующий вопрос";
+            button1.Text = "Выход";
+            button3.Visible = false;
+            button4.Visible = false;
+            label3.Visible = false;
+        }
+        public void EndVisible()
+        {
+            radioButton1.Visible = false;
+            radioButton2.Visible = false;
+            button2.Visible = false;
+            button3.Visible = true;
+            button4.Visible = true;
+            button4.Text = "Расшифровка пунктов";
+            label1.Visible = false;
+            label2.Visible = false;
+            panel2.Visible = false;
+            label3.Visible = true;
         }
         public void Conclusion()
         {
@@ -298,7 +318,7 @@ namespace Project
             {
                 rez_PvG = "Умеренно оптимистично";
             }
-            else if (PvG == 6 || PvG == 7)
+            else if (PvG >= 6 && PvG <= 8)
             {
                 rez_PvG = "Весьма оптимистично";
             }
@@ -374,7 +394,7 @@ namespace Project
         }
         public void Rez_B()
         {
-            if(B >= 3 && B < 6)
+            if(B >= 0 && B < 6)
             {
                 rez_B = "Вы замечательно оптимистичны";
             }

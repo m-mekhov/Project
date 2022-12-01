@@ -29,22 +29,22 @@ namespace Project
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,39 +56,63 @@ namespace Project
         {
             if (button2.Text == "Завершить")
             {
-                radioButton1.Visible = false;
-                radioButton2.Visible = false;
-                radioButton3.Visible = false;
-                radioButton4.Visible = false;
-                button2.Visible = false;
-                button3.Visible = true;
-                label2.Visible = false;
-                label3.Visible = true;
+                EndVisible();
+
                 Conclusion();   
+                
                 label1.Text = String.Format("Тестирование завершено.");
                 label3.Text = String.Format("Количество баллов: {0}\n" + "Результат тестирования: {1}", balls, result);
-                button3.Text = "Выбрать тест";
+                
             }
 
 
             if (button2.Text == "Следующий вопрос")
             {
                 Count();
+                
                 Question();
             }
 
         }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AuthorizationForm2 AF2 = new AuthorizationForm2();
+            AF2.Show();
+        }
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            button1.Text = "Выйти";
-            button2.Text = "Следующий вопрос";
             radioButton1.CheckedChanged += new EventHandler(Switching_status);
             radioButton2.CheckedChanged += new EventHandler(Switching_status);
             radioButton3.CheckedChanged += new EventHandler(Switching_status);
             radioButton4.CheckedChanged += new EventHandler(Switching_status);
-            label3.Visible = false;
-            button3.Visible= false;
+            
+            LoadVisible();
+
             Start();
+        }
+        public void LoadVisible()
+        {
+            button1.Text = "Выйти";
+            button2.Text = "Следующий вопрос";
+            label3.Visible = false;
+            button3.Visible = false;
+        }
+        public void EndVisible()
+        {
+            radioButton1.Visible = false;
+            radioButton2.Visible = false;
+            radioButton3.Visible = false;
+            radioButton4.Visible = false;
+            button2.Visible = false;
+            button3.Visible = true;
+            button3.Text = "Выбрать тест";
+            label2.Visible = false;
+            label3.Visible = true;
         }
         void Start()
         {
@@ -98,9 +122,7 @@ namespace Project
             {
                 Read = new StreamReader(Directory.GetCurrentDirectory() + @"\Depression test.txt", encoding);
 
-                this.Text = "Психологический тест";
-
-                question_count = 1;
+                question_count = 0;
                 balls = 0;
                 result = "";
             }
@@ -109,11 +131,11 @@ namespace Project
                 MessageBox.Show("Ошибка загрузки файла с вопросами");
             }
             Question();
-        }        
+        }
         public void Question()
         {
             label1.Text = "Как вы чувствовали себя на этой неделе?";
-            label2.Text = String.Format("Номер вопроса: {0}/21", question_count);
+            label2.Text = String.Format("Номер вопроса: {0}/21", question_count + 1);
             radioButton1.Text = Read.ReadLine();
             radioButton2.Text = Read.ReadLine();
             radioButton3.Text = Read.ReadLine();
@@ -121,8 +143,11 @@ namespace Project
 
             question_count = question_count + 1;
 
+            if (Read.EndOfStream == true)
+            {
+                button2.Text = "Завершить";
 
-            if (Read.EndOfStream == true) button2.Text = "Завершить";
+            }
         }
         public void Switching_status(object sender, EventArgs e)
         {
@@ -172,18 +197,6 @@ namespace Project
             {
                 result = "У Вас тяжёлая депрессия.";
             }
-        }
-
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            AuthorizationForm2 AF2 = new AuthorizationForm2();
-            AF2.Show();
         }
     } 
 }
