@@ -85,7 +85,8 @@ namespace Project
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(" PmB - постоянство плохих событий \n PmG - постоянство хороших событий \n PvB - пространственное распространение плохих событий \n PvG - пространственное распространение хороших событий \n HoB - коэффициент надежды \n PsB - персонализация плохого \n PsG - персонализация хорошего \n B - итог по неблагоприятным событиям \n G - итог по благоприятным событиям \n Разность G и B - окончательный итог");
+            Decoding d = new Decoding();
+            d.Show();
         }
         public void Switching_status(object sender, EventArgs e)
         {
@@ -258,6 +259,12 @@ namespace Project
                 rez_PmB = "Крайне пессимистичны";
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void Rez_PmG()
         {
             if (PmG >= 0 && PmG <= 3)

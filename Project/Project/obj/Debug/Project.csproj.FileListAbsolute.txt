@@ -30,3 +30,4 @@ D:\Games\Проект\Project\Project\obj\Debug\Project.AuthorizationForm2.resou
 E:\Проект\Project\Project\obj\Debug\Project.AuthorizationForm2.resources
 E:\Проект\Project\Project\obj\Debug\Project.PositivityTest.resources
 D:\Games\Проект\Project\Project\obj\Debug\Project.PositivityTest.resources
+D:\Games\Проект\Project\Project\obj\Debug\Project.Decoding.resources
