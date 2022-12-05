@@ -122,7 +122,7 @@ namespace Project
             {
                 Read = new StreamReader(Directory.GetCurrentDirectory() + @"\Depression test.txt", encoding);
 
-                question_count = 0;
+                question_count = 1;
                 balls = 0;
                 result = "";
             }
@@ -135,7 +135,7 @@ namespace Project
         public void Question()
         {
             label1.Text = "Как вы чувствовали себя на этой неделе?";
-            label2.Text = String.Format("Номер вопроса: {0}/21", question_count + 1);
+            label2.Text = String.Format("Номер вопроса: {0}/21", question_count);
             radioButton1.Text = Read.ReadLine();
             radioButton2.Text = Read.ReadLine();
             radioButton3.Text = Read.ReadLine();

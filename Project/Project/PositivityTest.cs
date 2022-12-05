@@ -103,7 +103,7 @@ namespace Project
 
                 this.Text = "Психологический тест";
                 PmB = 0; PmG = 0; PvB = 0; PvG = 0; HoB = 0; PsB = 0; PsG = 0; B = 0; G = 0;
-                question_count = 0; result = 0;
+                question_count = 1; result = 0;
                 rez_PmB = ""; rez_PmG = ""; rez_PvB = ""; rez_PvG = ""; rez_HoB = ""; rez_PsB = ""; rez_PsG = ""; rez_B = ""; rez_G = ""; rez_res = "";
 
             }
@@ -116,7 +116,7 @@ namespace Project
         public void Question()
         {
             label2.Text = Read.ReadLine();
-            label1.Text = String.Format("Номер вопроса: {0}/48", question_count + 1);
+            label1.Text = String.Format("Номер вопроса: {0}/48", question_count);
             radioButton1.Text = Read.ReadLine();
             radioButton2.Text = Read.ReadLine();
 
