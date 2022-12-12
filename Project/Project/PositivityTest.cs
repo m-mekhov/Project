@@ -61,20 +61,20 @@ namespace Project
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            Count();
             if (button2.Text == "Завершить")
             {
                 EndVisible();
                 
                 Conclusion();
                 
-                label3.Text = String.Format("Результат: \n PmB: {0}, {1} \n PmG: {2}, {3} \n PvB: {4}, {5} \n PvG: {6} {7} \n HoB: {8}, {9} \n PsB: {10}, {11} \n PsG {12}, {13} \n B: {14}, {15} \n G: {16}, {17} \n Разность G и B: {18}, {19} ", PmB, rez_PmB, PmG, rez_PmG, PvB, rez_PvB, PvG, rez_PvG, HoB, rez_HoB, PsB, rez_PsB, PsG, rez_PsG, B, rez_B, G, rez_G, result, rez_res);
+                label3.Text = String.Format("Результат: \n PmB: {0}, {1} \n PmG: {2}, {3} \n PvB: {4}, {5} \n PvG: {6} {7} \n HoB: {8}, {9} \n PsB: {10}, {11} \n PsG {12}, {13} \n B: {14}, {15} \n G: {16}, {17} \n Разность G и B: {18}, {19} ",
+                PmB, rez_PmB, PmG, rez_PmG, PvB, rez_PvB, PvG, rez_PvG, HoB, rez_HoB, PsB, rez_PsB, PsG, rez_PsG, B, rez_B, G, rez_G, result, rez_res);
             }
 
             if (button2.Text == "Следующий вопрос")
             {
                 Question();
-                
-                Count();
             }
         }
         private void button3_Click(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace Project
 
                 this.Text = "Психологический тест";
                 PmB = 0; PmG = 0; PvB = 0; PvG = 0; HoB = 0; PsB = 0; PsG = 0; B = 0; G = 0;
-                question_count = 1; result = 0;
+                question_count = 0; result = 0;
                 rez_PmB = ""; rez_PmG = ""; rez_PvB = ""; rez_PvG = ""; rez_HoB = ""; rez_PsB = ""; rez_PsG = ""; rez_B = ""; rez_G = ""; rez_res = "";
 
             }
@@ -116,7 +116,7 @@ namespace Project
         public void Question()
         {
             label2.Text = Read.ReadLine();
-            label1.Text = String.Format("Номер вопроса: {0}/48", question_count);
+            label1.Text = String.Format("Номер вопроса: {0}/48", question_count + 1);
             radioButton1.Text = Read.ReadLine();
             radioButton2.Text = Read.ReadLine();
 
@@ -185,6 +185,8 @@ namespace Project
                     PsB = PsB + 0;
                 }
             }
+            
+            
             if (question_count == 1 || question_count == 4 || question_count == 11 || question_count == 12 || question_count == 23 || question_count == 27 || question_count == 36 || question_count == 45)
             {
                 if (radioButton1.Checked == true)
@@ -196,10 +198,10 @@ namespace Project
                     PsG = PsG + 0;
                 }
             }
-            HoB = PmB + PvB; // 16
-            B = PmB + PvB + PsB; // 24
-            G = PmG + PvG + PsG; // 23
-            result = G - B; // -1
+            HoB = PmB + PvB;
+            B = PmB + PvB + PsB;
+            G = PmG + PvG + PsG;
+            result = G - B;
         }
         public void LoadVisible()
         {

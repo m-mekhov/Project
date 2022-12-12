@@ -54,6 +54,7 @@ namespace Project
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Count();
             if (button2.Text == "Завершить")
             {
                 EndVisible();
@@ -68,9 +69,7 @@ namespace Project
 
             if (button2.Text == "Следующий вопрос")
             {
-                Count();
-                
-                Question();
+               Question();
             }
 
         }
@@ -153,8 +152,6 @@ namespace Project
         {
             button1.Enabled = true;
             button2.Focus();
-            RadioButton p = (RadioButton)sender;
-            var t = p.Name;
         }
         public void Count()
         {
