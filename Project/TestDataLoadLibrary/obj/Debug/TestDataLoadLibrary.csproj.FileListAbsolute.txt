@@ -1,0 +1,9 @@
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\bin\Debug\TestDataLoadLibrary.dll
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\bin\Debug\TestDataLoadLibrary.pdb
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\bin\Debug\TestLibrary.dll
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\bin\Debug\TestLibrary.pdb
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\obj\Debug\TestDataLoadLibrary.csproj.AssemblyReference.cache
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\obj\Debug\TestDataLoadLibrary.csproj.CoreCompileInputs.cache
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\obj\Debug\TestDataLoadLibrary.csproj.CopyComplete
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\obj\Debug\TestDataLoadLibrary.dll
+C:\Users\sealw\source\Project\Project\TestDataLoadLibrary\obj\Debug\TestDataLoadLibrary.pdb

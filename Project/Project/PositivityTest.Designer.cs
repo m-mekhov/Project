@@ -89,7 +89,7 @@
             this.label3.Size = new System.Drawing.Size(65, 26);
             this.label3.TabIndex = 8;
             this.label3.Text = "label3";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button3
             // 
@@ -127,6 +127,7 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "label2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -185,7 +186,6 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "radioButton2";
             this.radioButton2.UseVisualStyleBackColor = false;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -201,7 +201,6 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = false;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // PositivityTest
             // 

@@ -112,5 +112,15 @@
   <ItemGroup>
     <Folder Include="images\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestDataLoadLibrary\TestDataLoadLibrary.csproj">
+      <Project>{20d3e121-ff89-4cba-bd4d-dde30b64dea5}</Project>
+      <Name>TestDataLoadLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestLibrary\TestLibrary.csproj">
+      <Project>{19c2e061-d6b4-49bd-9a44-559f3d2627c0}</Project>
+      <Name>TestLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

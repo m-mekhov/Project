@@ -1,0 +1,6 @@
+C:\Users\sealw\source\Project\Project\TestLibrary\bin\Debug\TestLibrary.dll
+C:\Users\sealw\source\Project\Project\TestLibrary\bin\Debug\TestLibrary.pdb
+C:\Users\sealw\source\Project\Project\TestLibrary\obj\Debug\TestLibrary.csproj.AssemblyReference.cache
+C:\Users\sealw\source\Project\Project\TestLibrary\obj\Debug\TestLibrary.csproj.CoreCompileInputs.cache
+C:\Users\sealw\source\Project\Project\TestLibrary\obj\Debug\TestLibrary.dll
+C:\Users\sealw\source\Project\Project\TestLibrary\obj\Debug\TestLibrary.pdb
